@@ -1,0 +1,1 @@
+cp /etc/hostsblock/unbound.conf /etc/unbound/unbound.conf
