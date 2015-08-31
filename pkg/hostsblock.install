@@ -5,4 +5,5 @@ original to '/etc/hostsblock/hosts.head' to preserve your entries.
 
 A documented configuration file is available under '/etc/hostsblock/rc.conf'.
 EOF
+  cp /etc/hostsblock/unbound.conf /etc/unbound/unbound.conf
 }
