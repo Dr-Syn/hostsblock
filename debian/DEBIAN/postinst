@@ -1,1 +1,2 @@
 cp /etc/hostsblock/unbound.conf /etc/unbound/unbound.conf
+touch /etc/hosts.block
