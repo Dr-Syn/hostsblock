@@ -220,7 +220,8 @@ if [ $_changed != 0 ]; then
 
     # COMMANDS TO BE EXECUTED AFTER PROCESSING
     _notify 3 "Executing postprocessing..."
-
+    # Munin's insert: postprocessing requires mod of blocklist format
+    /bin/bash /usr/lib/mangler.sh
     # Munin's insert: postprocessing requires reload of unbound.
     /usr/sbin/service unbound reload
     if [ $verbosity -ge 5 ]; then
