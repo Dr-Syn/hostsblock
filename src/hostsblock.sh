@@ -220,6 +220,9 @@ if [ $_changed != 0 ]; then
 
     # COMMANDS TO BE EXECUTED AFTER PROCESSING
     _notify 3 "Executing postprocessing..."
+
+    # Munin's insert: postprocessing requires reload of unbound.
+    /usr/sbin/service unbound reload
     if [ $verbosity -ge 5 ]; then
         postprocess && _notify 3 "Postprocessing completed." || _notify 1 "Postprocessing FAILED."
     else
