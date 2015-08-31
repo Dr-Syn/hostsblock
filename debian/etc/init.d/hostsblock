@@ -1,0 +1,60 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:		hostsblock
+# Required-Start:	$syslog $remote_fs
+# Required-Stop: 	$syslog $remote_fs
+# Should-Start: 	$network
+# Should-Stop:		$network
+# Default-Start:	2 3 4 5
+# Default-Stop:		1 6
+# Short-Description: 	hostsblock DNS sinkhole script
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/bin
+DAEMON=/usr/bin/hostsblock
+NAME=hostsblock
+PIDFILE=/var/run/hostsblock/$NAME.pid
+DESC="hostsblock-based DNS sinkhole script"
+
+unset TMPDIR
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+	start)
+		log_begin_msg "Starting $DESC: $NAME"
+		mkdir -p `dirname "$PIDFILE"`
+		start-stop-daemon --start --quiet --oknodo --pidfile "$PIDFILE" --exec $DAEMON && success=1
+		;;
+	stop)
+		log_begin_msg "Stopping $DESC: $NAME"
+		start-stop-daemon --stop --quiet --retry 5 --oknodo --pidfile "$PIDFILE" --name $NAME && success=1
+		;;
+	restart)
+		log_begin_msg "Restarting $DESC: $NAME"
+		if start-stop-daemon --stop --quiet --retry 5 --oknodo --pidfile "$PIDFILE" --name $NAME; then
+			start-stop-daemon --start --quiet --pidfile "$PIDFILE" --exec DAEMON && success=1
+		fi
+		;;
+	status)
+		echo -n "Status of $DESC: "
+		if [ ! -r "$PIDFILE" ]; then
+			echo "$NAME is not running."
+			exit 3
+		fi
+		if read pid < "$PIDFILE" && ps -p "$pid" > /dev/null 2>&1; then
+			echo "$NAME is running."
+			exit 0
+		else
+			echo "$NAME is not running but $PIDFILE exists."
+			exit 1
+		fi
+		;;
+	*)
+		N=/etc/init.d/${0##*/}
+		echo "Usage: $N {start|stop|restart|status}" > &2
+		exit 1
+		;;
+esac
+
+exit 0

@@ -1,0 +1,8 @@
+Package: hostsblock
+Version: 0.1-1
+Section: base
+Priority: optional
+Architecture: all
+Depends: curl, bash
+Maintainer: Munin <munin@hasameli.com>
+Description: A script and cronjob that downloads, sorts, and installs multiple ad- and malware-blocking hosts files and makes them available to Unbound DNS
