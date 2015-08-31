@@ -27,4 +27,5 @@ package() {
   install -Dm644 "$srcdir"/hostsblock.service "$pkgdir"/usr/lib/systemd/system/hostsblock.service
   install -Dm644 "$srcdir"/hostsblock.timer "$pkgdir"/usr/lib/systemd/system/hostsblock.timer
   install -Dm644 "$srcdir"/hostsblock.sysv "$pkgdir"/etc/init.d/hostsblock
+  install -Dm644 "$srcdir"/unbound.conf "$pkgdir"/etc/hostsblock/unbound.conf
 }
