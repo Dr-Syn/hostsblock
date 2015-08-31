@@ -2,9 +2,25 @@ hostsblock [Unbound sinkholing variant]
 ==========
 An ad- and malware-blocking script for Linux, now modded to work with Unbound DNS
 
-News & Bugs
+Instructions
 -----------
-For the latest news about `hostsblock`, and to submit questions, bugs, patches, and feedback in general, please consult [its issues page](https://github.com/gaenserich/hostsblock/issues). There are also ongoing discussions in the [ArchLinux forum](https://bbs.archlinux.org/viewtopic.php?id=139784) and on [its ArchLinux AUR page](https://aur.archlinux.org/packages/hostsblock/).
+First, install unbound. For debian and derivatives, this is:
+>sudo apt-get install unbound
+
+Then, clone this repo with
+> git clone https://github.com/Dr-Syn/hostsblock.git
+
+Then, change to the repo's directory and issue a make:
+> cd hostsblock
+> make all
+
+Then, make install to complete the installation. You should be asked for a sudo password.
+> make install
+
+Finally, either reboot your system or execute the hostsblock script to initialize the blacklists:
+> sudo /usr/bin/hostsblock.sh 
+
+And you're done! Point any systems you want to use the sinkholed DNS to the IP of the system that you've installed this on, and it should work for you.
 
 Description
 -----------
