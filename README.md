@@ -43,3 +43,4 @@ A pseudo-server that serves blank pages in order to remove the boilerplate page 
 [Gzip](http://www.gnu.org/software/gzip/) or [pigz](http://www.zlib.net/pigz/) to compress backup files and the annotation database. 
 
 
+TODO: Rewrite this into a proper daemon using the much more polite 'HEAD' verb to check whether lists have been updated rather than this 'GET' nonsense.
