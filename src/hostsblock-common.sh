@@ -327,7 +327,7 @@ _check_url(){
 
 # SET DEFAULT SETTINGS
 export tmpdir="/dev/shm"
-export hostsfile="/etc/hosts"
+export hostsfile="/etc/hosts.conf"
 export redirecturl="127.0.0.1"
 export dnscacher="auto"
 postprocess() {
