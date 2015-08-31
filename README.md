@@ -1,6 +1,6 @@
-hostsblock
+hostsblock [Unbound sinkholing variant]
 ==========
-An ad- and malware-blocking script for Linux
+An ad- and malware-blocking script for Linux, now modded to work with Unbound DNS
 
 News & Bugs
 -----------
@@ -28,15 +28,13 @@ Dependencies
 ------------
 Hostsblock only requires a few utilities that are standard on most Linux distros, including GNU [bash](http://www.gnu.org/software/bash/bash.html), [curl](http://curl.haxx.se/), GNU [grep](http://www.gnu.org/software/grep/grep.html), GNU [sed](http://www.gnu.org/software/sed), and GNU [coreutils](http://www.gnu.org/software/coreutils).
 
+This package -will- require that Unbound DNS be installed beforehand. It can be found [here](https://www.unbound.net/index.html)
+
 Optional dependencies. Hostsblock allows for additional features if the following utilities are installed and in the path:
 
 Unarchivers, so that archive blocklists can be used instead of just plaintext, e.g.:
 * [unzip](http://www.info-zip.org/UnZip.html) for zip archives, AND
 * [p7zip](http://p7zip.sourceforge.net/) for 7z archives (must include either 7z or 7za executables)
-
-A DNS caching daemon to help speed up DNS resolutions, such as:
-* [dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) (recommended), OR
-* [pdnsd](http://members.home.nl/p.a.rombouts/pdnsd/) (untested)
 
 A pseudo-server that serves blank pages in order to remove the boilerplate page and speed up page resolution on blocked domains. Examples include:
 * [kwakd](https://code.google.com/p/kwakd/) (recommended), OR
@@ -44,6 +42,4 @@ A pseudo-server that serves blank pages in order to remove the boilerplate page 
 
 [Gzip](http://www.gnu.org/software/gzip/) or [pigz](http://www.zlib.net/pigz/) to compress backup files and the annotation database. 
 
-Todo
-----
-See the [issues page](https://github.com/gaenserich/hostsblock/issues)
+
